@@ -1,0 +1,69 @@
+.dialog_listBuilder .dialogActions.dialogActionsCenter {
+
+	position: static;
+}
+
+/*first diaog*/
+
+#zi-mylists-template-dialog-openImportgDialog .importFromOptions{
+	background-color: #E3E3E3;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-radius: 8px;
+    font-family: 'Arial Bold', 'Arial';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+}
+
+#zi-mylists-template-dialog-openImportgDialog .importFromOptions  .importOptions {
+    padding-left: 30px;
+    padding-bottom: 10px;
+}
+
+#zi-mylists-template-dialog-openImportgDialog .importFromOptions .importOptions input[type="radio"]
+{
+	display: none;
+}
+
+#zi-mylists-template-dialog-openImportgDialog .importFromOptions .importOptions .importRadioIcon
+{
+	background: url('../img/radial-unchecked.png') no-repeat;
+	display: inline-block;
+	height: 23px;
+	width: 23px;
+	vertical-align: middle;
+	margin-top: -4px;
+}
+
+#zi-mylists-template-dialog-openImportgDialog .importFromOptions .importOptions input[type="radio"]:checked ~ .importRadioIcon
+{
+	background: url('../img/radial-checked.png') no-repeat;
+}
+
+#zi-mylists-template-dialog-openImportgDialog .importFromOptions .importOptions input[type="radio"]:hover ~ .importRadioIcon:hover
+{
+	background: url('../img/radial-uncheckedHover.png') no-repeat;
+}
+
+#zi-mylists-template-dialog-openImportgDialog .importFromOptions .importOptions input[type="radio"]:disabled ~ .importRadioIcon,
+#zi-mylists-template-dialog-openImportgDialog .importFromOptions .importOptions input[type="radio"]:disabled:hover ~ .importRadioIcon:hover
+{
+	background: url('../img/radial-disabled.png') no-repeat;
+}
+
+#zi-mylists-template-dialog-openImportgDialog .importFromOptions .importOptions input[type="radio"]:checked:hover ~ .importRadioIcon:hover
+{
+	background: url('../img/radial-checkedHover.png') no-repeat;
+}
+
+#zi-mylists-template-dialog-openImportgDialog .importFromFirstLine {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 16px;
+    text-align: left;
+    line-height: 20px;
+}
+#zi-mylists-template-dialog-openImportgDialog .importFromOptions  .importOptions .nonBoldedOption {
+	font-weight: 400;
+}

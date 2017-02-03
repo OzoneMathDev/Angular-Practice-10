@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="practice10">
+    <head>
+        <title>Directives</title>
+        <script src="angular.js"></script>
+        <link href="bootstrap.css" rel="stylesheet"/>
+        <link href="bootstrap-theme.css" rel="stylesheet"/>
+        <style>
+            .odd{background-color: lightcoral}
+            .even{background-color: lavenderblush}
+        </style>
+        <script>
+            angular.module("practice10", [])
+                    .controller("defaultCtrl", function ($scope) {
+                        //data.mode : will control the radio button inputs
+                        //will be set later
+                        $scope.data = {};
+
+                        $scope.todos = [
+                            {"action": "Buy Flowers", "complete": false},
+                            {"action": "Buy Running Shoes", "complete": true},
+                            {"action": "Get Groceries", "complete": false},
+                            {"action": "Call Family", "complete": false},
+                            {"action": "Call Plumber", "complete": false}
+                        ];
+
+                        //control the partial views
+                        $scope.viewFile = function () {
+                            return $scope.showList ? "list.html" : "table.html";
+                        };
+                        //tells which view is used: write to the console
+                        $scope.reportChange = function () {
+                            console.log("Displayed Content: " + $scope.viewFile());
+                        };
+                    });
+        
+        </script>
+    </head>
+    <body>
+        <div id="todoPanel" class="panel" ng-controller="defaultCtrl">
+
+            <h3 class="panel-header">To Do List</h3>           
+            <h4>Data Items will Go here...</h4>            
+
+            <div class="well">
+                <h4>Working With Partial Views: ng include</h4>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="showList"> Use the list view
+                    </label>
+                </div>
+                <div ng-include src="viewFile()" onload="reportChange()"></div>
+
+                <h4>Conditionally Swapping Elements</h4>
+                <div class="radio" ng-repeat="button in ['None', 'Table', 'List']">
+                    <label>
+                        <input type="radio" ng-model="data.mode" value="{{button}}" ng-checked="$first">
+                        {{button}}
+                    </label>
+                </div>
+
+                <!-- Switching on the value of data.mode: 'None', 'Table', or 'List' -->
+                <div ng-switch on='data.mode'>
+                    <div ng-switch-when='Table'>
+                        <table class="table">
+                            <thead>
+                                <tr><th>#</th> <th>Action</th> <th>Done</th> </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in todos" ng-class="$odd ? 'odd' : 'even'">
+                                    <td>{{$index + 1}}</td>
+                                    <td ng-repeat="prop in item">{{prop}}</td>
+                            </tbody>                                                   
+                        </table> 
+                    </div>
+                    <div ng-switch-when="List">
+                        <ol>
+                            <li ng-repeat="item in todos">{{item.action}} <span ng-if="item.complete">(Done)</span></li>
+                        </ol>
+                    </div>
+                    <div ng-switch-default>Select another option to display a layout</div>
+                </div>
+                <!-- end of switching-->
+            </div>
+        </div>
+    </body>
+</html>
